@@ -1,11 +1,6 @@
-# Functions
-# Count how many words are in a string
-def word_count(string):
-    split = string.split()
-    count = 0
-    for str in split:
-        count += 1
-    return count
+from stats import word_count
+
+
 
 # Count how many letters are in a string
 def count_letters(string):
@@ -61,5 +56,5 @@ def main(book):
     print_report(wc, lc, book)
 
 
-
-main(input("Input the directory of a book to report on, or press Enter to start processing Frankenstein: "))
+main(None)
+# main(input("Input the directory of a book to report on, or press Enter to start processing Frankenstein: "))
