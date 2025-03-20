@@ -1,5 +1,5 @@
 from stats import word_count
-
+import sys
 
 
 # Count how many letters are in a string
@@ -43,12 +43,16 @@ def print_report(word_count, letter_count, book_name):
     print(f"{word_count} words found in the document\n")
     letter_count = sort_dictionary(letter_count)
     for key in letter_count:
-        print(f"The '{key}' character was found {letter_count[key]} times")
+        print(f"{key}: {letter_count[key]}")
 
 
-def main(book):
-    if book == "" or book is None:
-        book = "books/frankenstein.txt"
+def main():
+    book = sys.argv
+    if len(book) > 1:
+        book = book[1]
+    else:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
     with open(book) as f:
         file_contents = f.read()
     wc = word_count(file_contents)
@@ -56,5 +60,4 @@ def main(book):
     print_report(wc, lc, book)
 
 
-main(None)
-# main(input("Input the directory of a book to report on, or press Enter to start processing Frankenstein: "))
+main()
